@@ -14,6 +14,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
@@ -24,6 +25,7 @@ fun TodoItemComponent(
     todo: TodoItem,
     onCheckedChange: (Boolean) -> Unit,
     onClick: () -> Unit,
+    completedColor: Color = MaterialTheme.colorScheme.surfaceVariant,
     modifier: Modifier = Modifier
 ) {
     Card(
@@ -34,9 +36,9 @@ fun TodoItemComponent(
             .clickable(onClick = onClick),
         elevation = CardDefaults.cardElevation(defaultElevation = 2.dp),
         colors = CardDefaults.cardColors(
-            containerColor = if (todo.isCompleted) 
-                MaterialTheme.colorScheme.surfaceVariant 
-            else 
+            containerColor = if (todo.isCompleted)
+                completedColor
+            else
                 MaterialTheme.colorScheme.surface
         )
     ) {

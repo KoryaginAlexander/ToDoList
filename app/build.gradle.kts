@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.compose.compiler)
+    id("com.google.devtools.ksp") version "2.0.21-1.0.26"
 }
 
 android {
@@ -73,7 +74,15 @@ dependencies {
     
     // Coroutines
     implementation(libs.kotlinx.coroutines.android)
-    
+
+    // Room
+    implementation("androidx.room:room-runtime:2.6.1")
+    implementation("androidx.room:room-ktx:2.6.1")
+    ksp("androidx.room:room-compiler:2.6.1")
+
+    // Datastore
+    implementation("androidx.datastore:datastore-preferences:1.1.1")
+
     // Testing
     testImplementation(libs.junit)
     testImplementation(libs.kotlinx.coroutines.test)
